@@ -3,9 +3,11 @@ import Square from './Square';
 
 const Board = () => {
 
-    const [board,setBoard] = useState(Array(9).fill(null));  //We define array using Array(size) in react js
-    const [isXNext,setIsXNext] = useState(false);
-    const handleSquareClick = (position) => {
+    const [board,setBoard] = useState(Array(9).fill(null));  //We define array using Array(size) in react js.
+    const [isXNext,setIsXNext] = useState(false);           //We do it to check whether the next sign is X or not.
+
+
+    const handleSquareClick = (position) => {                                //Handles whether the sign is O or X 
         if(board[position]){
             return;
         }
@@ -22,7 +24,7 @@ const Board = () => {
         setIsXNext(prev => !prev);
     }
 
-    const renderSquare = position => {
+    const renderSquare = position => {                 // handles click on all the squares
         return (
           <Square
             value={board[position]}

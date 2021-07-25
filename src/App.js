@@ -18,7 +18,20 @@ const App = () => {
   const winner = calculateWinner(current.board);
   
 
-  const message = winner ? `Winner is ${winner}` : `Next player is ${current.isXNext ? 'X' : 'O'}`
+    
+  const setMessage = () => {
+    if(winner!=null){
+      return `Winner is ${winner}`;
+    }else{
+      if(!current.board.includes(null)){
+        return `Match is Tie`;
+      }else{
+        return `Next player is ${current.isXNext ? 'X' : 'O'}`;
+      }
+    }
+  }
+
+  const message = setMessage();
 
   const handleSquareClick = (position) => {                                //Handles whether the sign is O or X 
       if(current.board[position] || winner){

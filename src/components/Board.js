@@ -1,30 +1,9 @@
 import React, { useState } from 'react' //useState is a hook to use the components more easily
 import Square from './Square';
 
-const Board = () => {
+const Board = ({board , handleSquareClick}) => {
 
-    const [board,setBoard] = useState(Array(9).fill(null));  //We define array using Array(size) in react js.
-    const [isXNext,setIsXNext] = useState(false);           //We do it to check whether the next sign is X or not.
-
-
-    const handleSquareClick = (position) => {                                //Handles whether the sign is O or X 
-        if(board[position]){
-            return;
-        }
-        
-        setBoard( (prev)=>{
-            return prev.map((square,pos)=>{
-                if(position === pos){
-                    return isXNext ? 'X' : 'O';
-                }
-                return square;
-            })
-        } )
-
-        setIsXNext(prev => !prev);
-    }
-
-    const renderSquare = position => {                 // handles click on all the squares
+    const renderSquare = (position) => {                 // handles click on all the squares
         return (
           <Square
             value={board[position]}

@@ -1,13 +1,15 @@
 import React, { useState } from 'react' //useState is a hook to use the components more easily
 import Square from './Square';
 
-const Board = ({board , handleSquareClick}) => {
+const Board = ({board , handleSquareClick, winningSquares}) => {
 
-    const renderSquare = (position) => {                 // handles click on all the squares
+    const renderSquare = (position) => {   
+      const isWinningSquare = winningSquares.includes(position);              // handles click on all the squares
         return (
           <Square
             value={board[position]}
             onClick={() => handleSquareClick(position)}
+            isWinningSquare={isWinningSquare}
           />
         );
       };
